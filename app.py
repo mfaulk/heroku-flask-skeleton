@@ -4,6 +4,10 @@ from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
+# For Heroku, something like
+# heroku config:set APP_SETTINGS=config.ProductionConfig is appropriate.
+app.config.from_object(os.environ['APP_SETTINGS'])
+
 
 @app.route('/')
 def home():
